@@ -854,10 +854,13 @@
             },
             methods: {
                 onBtnClick() {
-                    const left = LEFT[Math.floor(Math.random() * LEFT.length)];
+                    // const left = LEFT[Math.floor(Math.random() * LEFT.length)];
                     const right = RIGHT[Math.floor(Math.random() * RIGHT.length)];
-                    const date = `0${new Date().getDate()}`.slice(-2);
-                    this.input = `release_${left}_${right}${date}`;
+                    const date = new Date();
+                    const year = date.getFullYear();
+                    const month = `0${date.getMonth() + 1}`.slice(-2);
+                    // const date = `0${new Date().getDate()}`.slice(-2);
+                    this.input = `release_${right}${year}${month}`;
                 }
             },
             mounted() {
