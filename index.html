@@ -38,10 +38,12 @@
                 <div class="item_area">
                     <el-button type="primary" round @click="onBtnClick">Generate</el-button>
                 </div>
-                <h3>Greate Man</h3>
+                <h3>Person</h3>
                 <el-input placeholder="Please input" v-model="input" readonly></el-input>
                 <h3>Pokemon</h3>
                 <el-input placeholder="Please input" v-model="inputPokemon" readonly></el-input>
+                <h3>Colors</h3>
+                <el-input placeholder="Please input" v-model="inputColors" readonly></el-input>
             </el-main>
         </el-container>
     </div>
@@ -50,13 +52,15 @@
     <script src="path/to/dayjs/dayjs.min.js"></script>
     <script src="./jaconv.min.js"></script>
     <script src="data/pokedex.js"></script>
-    <script src="data/greate_man.js"></script>
+    <script src="data/person.js"></script>
+    <script src="data/colors.js"></script>
     <script>
         const app = {
             data() {
                 return {
                     input: "test input",
                     inputPokemon: "pokemon",
+                    inputColors: "colors",
                     targetDate: new Date(),
                     selectMethod: 'day of year'
                 }
@@ -76,20 +80,12 @@
                     const name = this.getItem(POKEMON).name.japanese;
                     return jaconv.toHebon(jaconv.toHiragana(name)).toLowerCase();
                 },
-                // getGreateMan(dayOfYear) {
-                //     return this.choiceRandom(GREATE_MAN);
-                // },
                 onBtnClick() {
-                    // const left = LEFT[Math.floor(Math.random() * LEFT.length)];
-                    //const right = RIGHT[Math.floor(Math.random() * RIGHT.length)];
                     const date = this.targetDate;
-                    const dayOfYear = dayjs(date).dayOfYear();
                     const year = date.getFullYear();
-                    //const month = `0${date.getMonth() + 1}`.slice(-2);
-                    // const date = `0${new Date().getDate()}`.slice(-2);
-                    //this.input = `release_${right}${dayOfYear}`;
-                    this.input = `release_${this.getItem(GREATE_MAN)}${year}`;
+                    this.input = `release_${this.getItem(PERSONS)}${year}`;
                     this.inputPokemon = `release_${this.getPokemon()}${year}`;
+                    this.inputColors = `release_${this.getItem(COLORS)}${year}`;
                 }
             },
             mounted() {
